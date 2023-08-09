@@ -3,7 +3,7 @@ from defs import *
 #List the candidate configurations.
 #list_candidate()
 
-#Get a configuration by version.
+#Get a configuration by version, currently set as version 33.
 #get_config()
 
 #Get the running configuration.
