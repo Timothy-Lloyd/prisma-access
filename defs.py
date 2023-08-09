@@ -36,7 +36,8 @@ def get_running_config():
     print(response.text)
 
 def get_config():
-    url = "https://api.sase.paloaltonetworks.com/sse/config/v1/config-versions/version:33"
+    #currently set as version 33
+    url = "https://api.sase.paloaltonetworks.com/sse/config/v1/config-versions/33"
     response = requests.request("GET", url, headers=headers, data=payload)
     print(response.text)
 
