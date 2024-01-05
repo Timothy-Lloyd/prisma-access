@@ -1,13 +1,7 @@
 import requests
 import vars
 import json
-import time
 import os
-import json
-
-localtime = time.localtime()
-formattime = time.strftime("%d-%m-%Y %H:%M:%S", localtime)
-datetime = time.strftime("%d-%m-%Y", localtime)
 
 def get_token():
     global token
