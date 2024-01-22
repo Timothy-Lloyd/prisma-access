@@ -1,4 +1,5 @@
 # prisma-access
+Basic functions to both retrieve and post configuration to Prisma Access Strata Cloud Manager.  
 
 ## Retrieve configurations:  
 Using prisma-get-functions.py, remove # from function you wish to run. Ensure vars.py is updated with the correct service account information.
