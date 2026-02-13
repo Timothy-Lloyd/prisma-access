@@ -1,0 +1,6 @@
+name,description,group,fqdn,protocol,port,probe_type,probe_port,app_enabled
+App1,App1 description,get-the-group-code-from-"get_fqdn_rule()",app1.tim.local,tcp,443,,,
+App2,App2 description,get-the-group-code-from-"get_fqdn_rule()",app2.tim.local,tcp,443,,,
+App3,App3 description,get-the-group-code-from-"get_fqdn_rule()",app3.tim.local,tcp,443,,,
+App4,App4 description,get-the-group-code-from-"get_fqdn_rule()",app4.tim.local,tcp,443,,,
+App5,App5 description,get-the-group-code-from-"get_fqdn_rule()",app5.tim.local,tcp,443,,,
