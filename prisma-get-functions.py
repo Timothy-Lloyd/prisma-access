@@ -20,3 +20,7 @@ from defs import *
 
 ### Gets the services defined within objects
 #get_global_objects_services()
+
+
+### Gets ZTNA Apps from Prisma Access.
+#get_fqdn_rule()
