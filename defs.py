@@ -2,6 +2,7 @@ import requests
 import vars
 import json
 import os
+import csv
 
 def get_token():
     global token
@@ -32,6 +33,16 @@ headers = {
 }
 headersPost = {
 'Content-Type': 'application/json',
+'Authorization': 'Bearer ' + token
+}
+headersv2 = {
+'Accept': 'application/json',
+'x-panw-region': 'uk',
+'Authorization': 'Bearer ' + token
+}
+headersPostv2 = {
+'Content-Type': 'application/json',
+'x-panw-region': 'uk',
 'Authorization': 'Bearer ' + token
 }
 
@@ -103,6 +114,42 @@ def put_global_objects_services():
     response = requests.request("POST", url, headers=headersPost, json=payload)
     print(response.text)
 
+def get_fqdn_rule():
+    url = "https://api.sase.paloaltonetworks.com/sse/connector/v2.0/api/applications"
+    response = requests.request("GET", url, headers=headersv2, data=payload)
+    print(response.text)
+def post_create_fqdn_rule():
+    url = "https://api.sase.paloaltonetworks.com/sse/connector/v2.0/api/applications"
+    file_path = 'output/ztna_fqdn_data.csv'
+    try:
+        with open(file_path, mode='r', encoding='utf-8') as csv_file:
+            csv_reader = csv.DictReader(csv_file)
+            for row in csv_reader:
+                payload = {
+                    "name": row['name'],
+                    "description": row['description'],
+                    "group": row['group'],
+                    "spec": [
+                        {
+                        "fqdn": row['fqdn'],
+                        "protocol": row['protocol'],
+                        "port": row['port'],
+                        "probe_type": row['probe_type'],
+                        "probe_port": row['probe_port']
+                        }
+                    ],
+                    "app_enabled": True
+                    }
+                print(f"Processing: "+row['name']+" | FQDN: "+row['fqdn'])
+                response = requests.request("POST", url, headers=headersPostv2, json=payload)
+                print(response.text)
+        print("\nFile processing complete.")
+    except FileNotFoundError:
+        print(f"Error: The file '{file_path}' was not found.")
+
+
+
+
 
 #list_candidate()
 #get_config()
@@ -115,3 +162,5 @@ def put_global_objects_services():
 #put_global_file_blocking_profiles()
 #get_global_objects_services()
 #put_global_objects_services()
+#get_fqdn_rule()
+#post_create_fqdn_rule()
