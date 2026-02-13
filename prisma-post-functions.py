@@ -11,3 +11,7 @@ from defs import *
 
 ### Posts the services defined within objects
 #put_global_objects_services()
+
+### Adds ZTNA Apps to Prisma Access. Fill in the required apps within file output/ztna_fqdn_data.csv
+#post_create_fqdn_rule()
+
